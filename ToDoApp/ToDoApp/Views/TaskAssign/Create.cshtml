@@ -1,0 +1,108 @@
+﻿@model ToDoApp.TaskDetail
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>TaskDetail</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TaskDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TaskDescription)
+            @Html.ValidationMessageFor(model => model.TaskDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TodayDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TodayDate)
+            @Html.ValidationMessageFor(model => model.TodayDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeadLine)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DeadLine)
+            @Html.ValidationMessageFor(model => model.DeadLine)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompletedOn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompletedOn)
+            @Html.ValidationMessageFor(model => model.CompletedOn)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Remark)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Remark)
+            @Html.ValidationMessageFor(model => model.Remark)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AssignId, "Assign")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("AssignId", String.Empty)
+            @Html.ValidationMessageFor(model => model.AssignId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DepartmentId, "Department")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("DepartmentId", String.Empty)
+            @Html.ValidationMessageFor(model => model.DepartmentId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PriorityId, "Priority")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PriorityId", String.Empty)
+            @Html.ValidationMessageFor(model => model.PriorityId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StatusId, "Status")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("StatusId", String.Empty)
+            @Html.ValidationMessageFor(model => model.StatusId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TaskTypeId, "TaskType")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TaskTypeId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TaskTypeId)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

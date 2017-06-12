@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1fcaf69e8a504d44a641fd40900a27de" Name="Diagram1">
+        <EntityTypeShape EntityType="ToDoListSampleDbModel.Assign" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoListSampleDbModel.Department" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoListSampleDbModel.Priority" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoListSampleDbModel.Status" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoListSampleDbModel.TaskDetail" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoListSampleDbModel.TaskType" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="ToDoListSampleDbModel.FK_dbo_TaskDetails_dbo_Assigns_AssignId" ManuallyRouted="false" />
+        <AssociationConnector Association="ToDoListSampleDbModel.FK_dbo_TaskDetails_dbo_Departments_DepartmentId" ManuallyRouted="false" />
+        <AssociationConnector Association="ToDoListSampleDbModel.FK_dbo_TaskDetails_dbo_Priorities_PriorityId" ManuallyRouted="false" />
+        <AssociationConnector Association="ToDoListSampleDbModel.FK_dbo_TaskDetails_dbo_Status_StatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="ToDoListSampleDbModel.FK_dbo_TaskDetails_dbo_TaskTypes_TaskTypeId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

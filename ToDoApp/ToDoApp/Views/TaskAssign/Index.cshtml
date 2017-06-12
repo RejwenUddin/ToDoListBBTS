@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ToDoApp.TaskDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TodayDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeadLine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assign.AssignName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.DepartmetName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority.PriorityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.StatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskType.TaskName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TodayDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeadLine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompletedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assign.AssignName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.DepartmetName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority.PriorityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.StatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskType.TaskName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

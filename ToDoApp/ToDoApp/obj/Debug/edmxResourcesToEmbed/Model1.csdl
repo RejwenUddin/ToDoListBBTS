@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ToDoListSampleDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Assign">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssignName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaskDetails" Relationship="Self.FK_dbo_TaskDetails_dbo_Assigns_AssignId" FromRole="Assigns" ToRole="TaskDetails" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmetName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaskDetails" Relationship="Self.FK_dbo_TaskDetails_dbo_Departments_DepartmentId" FromRole="Departments" ToRole="TaskDetails" />
+  </EntityType>
+  <EntityType Name="Priority">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PriorityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaskDetails" Relationship="Self.FK_dbo_TaskDetails_dbo_Priorities_PriorityId" FromRole="Priorities" ToRole="TaskDetails" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaskDetails" Relationship="Self.FK_dbo_TaskDetails_dbo_Status_StatusId" FromRole="Status" ToRole="TaskDetails" />
+  </EntityType>
+  <EntityType Name="TaskDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TodayDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeadLine" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CompletedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AssignId" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+    <Property Name="PriorityId" Type="Int32" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <Property Name="TaskTypeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Assign" Relationship="Self.FK_dbo_TaskDetails_dbo_Assigns_AssignId" FromRole="TaskDetails" ToRole="Assigns" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_dbo_TaskDetails_dbo_Departments_DepartmentId" FromRole="TaskDetails" ToRole="Departments" />
+    <NavigationProperty Name="Priority" Relationship="Self.FK_dbo_TaskDetails_dbo_Priorities_PriorityId" FromRole="TaskDetails" ToRole="Priorities" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_dbo_TaskDetails_dbo_Status_StatusId" FromRole="TaskDetails" ToRole="Status" />
+    <NavigationProperty Name="TaskType" Relationship="Self.FK_dbo_TaskDetails_dbo_TaskTypes_TaskTypeId" FromRole="TaskDetails" ToRole="TaskTypes" />
+  </EntityType>
+  <EntityType Name="TaskType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaskDetails" Relationship="Self.FK_dbo_TaskDetails_dbo_TaskTypes_TaskTypeId" FromRole="TaskTypes" ToRole="TaskDetails" />
+  </EntityType>
+  <Association Name="FK_dbo_TaskDetails_dbo_Assigns_AssignId">
+    <End Role="Assigns" Type="Self.Assign" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskDetails" Type="Self.TaskDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assigns">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskDetails">
+        <PropertyRef Name="AssignId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TaskDetails_dbo_Departments_DepartmentId">
+    <End Role="Departments" Type="Self.Department" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskDetails" Type="Self.TaskDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskDetails">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TaskDetails_dbo_Priorities_PriorityId">
+    <End Role="Priorities" Type="Self.Priority" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskDetails" Type="Self.TaskDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priorities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskDetails">
+        <PropertyRef Name="PriorityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TaskDetails_dbo_Status_StatusId">
+    <End Role="Status" Type="Self.Status" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskDetails" Type="Self.TaskDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskDetails">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TaskDetails_dbo_TaskTypes_TaskTypeId">
+    <End Role="TaskTypes" Type="Self.TaskType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaskDetails" Type="Self.TaskDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskDetails">
+        <PropertyRef Name="TaskTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ToDoListSampleDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Assigns" EntityType="Self.Assign" />
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Priorities" EntityType="Self.Priority" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="TaskDetails" EntityType="Self.TaskDetail" />
+    <EntitySet Name="TaskTypes" EntityType="Self.TaskType" />
+    <AssociationSet Name="FK_dbo_TaskDetails_dbo_Assigns_AssignId" Association="Self.FK_dbo_TaskDetails_dbo_Assigns_AssignId">
+      <End Role="Assigns" EntitySet="Assigns" />
+      <End Role="TaskDetails" EntitySet="TaskDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TaskDetails_dbo_Departments_DepartmentId" Association="Self.FK_dbo_TaskDetails_dbo_Departments_DepartmentId">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="TaskDetails" EntitySet="TaskDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TaskDetails_dbo_Priorities_PriorityId" Association="Self.FK_dbo_TaskDetails_dbo_Priorities_PriorityId">
+      <End Role="Priorities" EntitySet="Priorities" />
+      <End Role="TaskDetails" EntitySet="TaskDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TaskDetails_dbo_Status_StatusId" Association="Self.FK_dbo_TaskDetails_dbo_Status_StatusId">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="TaskDetails" EntitySet="TaskDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TaskDetails_dbo_TaskTypes_TaskTypeId" Association="Self.FK_dbo_TaskDetails_dbo_TaskTypes_TaskTypeId">
+      <End Role="TaskTypes" EntitySet="TaskTypes" />
+      <End Role="TaskDetails" EntitySet="TaskDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

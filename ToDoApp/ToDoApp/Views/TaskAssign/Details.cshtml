@@ -1,0 +1,85 @@
+﻿@model ToDoApp.TaskDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TaskDetail</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TaskDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TaskDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TodayDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TodayDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeadLine)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeadLine)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompletedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompletedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Remark)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Remark)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Assign.AssignName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Assign.AssignName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Department.DepartmetName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.DepartmetName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Priority.PriorityName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Priority.PriorityName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status.StatusName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status.StatusName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TaskType.TaskName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TaskType.TaskName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
